@@ -1,0 +1,72 @@
+{% extends 'store/main.html' %}
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h1>You are already logged In</h1>
+
+{% else %}
+
+<br><br>
+<h1>Log In</h1>
+<br><br>
+
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        
+            <form>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                <input type="text"  class="form-control" name="username" placeholder="User name" required />
+                
+                </div>
+                
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                <input type="password"  class="form-control" name="password" placeholder="Password" required/>
+                
+                </div>
+            
+                <!-- 2 column grid layout for inline styling -->
+                <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    
+                </div>
+            
+               
+                </div>
+            
+                <!-- Submit button -->
+                <button type="submit" class="btn btn-primary ">Log in</button>
+            
+                <!-- Register buttons -->
+                <div class="text-center">
+                <p>Not a member? <a href="{% url "register" %}">Register</a></p>
+                <p>or sign up with:</p>
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+            
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-google"></i>
+                </button>
+            
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-twitter"></i>
+                </button>
+            
+                <button type="button" class="btn btn-link btn-floating mx-1">
+                    <i class="fab fa-github"></i>
+                </button>
+                </div>
+            </form>
+
+    </form>
+
+</div>
+
+
+
+{% endif %}
+{% endblock content %}

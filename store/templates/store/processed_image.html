@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Processed Image</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 100vh;
+            background-image: url('static/images/products/ecommerce.jpg');
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        #image-container {
+            text-align: center;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto;
+            transition: transform 0.2s ease-in-out;
+        }
+        .zoom-controls {
+            text-align: center;
+            margin-top: 20px;
+        }
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Processed Image</h1>
+    <div id="image-container">
+        <img id="processed-image" src="data:image/jpeg;base64,{{ processed_image }}" alt="Processed Image">
+    </div>
+    <div class="zoom-controls">
+        <button onclick="zoomIn()">Zoom In</button>
+        <button onclick="zoomOut()">Zoom Out</button>
+    </div>
+
+    <script>
+        var zoomLevel = 1;
+
+        function zoomIn() {
+            zoomLevel += 0.1;
+            updateZoom();
+        }
+
+        function zoomOut() {
+            zoomLevel -= 0.1;
+            updateZoom();
+        }
+
+        function updateZoom() {
+            var image = document.getElementById("processed-image");
+            image.style.transform = "scale(" + zoomLevel + ")";
+        }
+    </script>
+</body>
+</html>
